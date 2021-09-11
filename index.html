@@ -4,295 +4,240 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/browser-image-converter@0.1.1/dist/index.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
     <script src="https://kit.fontawesome.com/df91c89325.js" crossorigin="anonymous"></script>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
-
-*
-{
- margin:0;   
- padding: 0;
- box-sizing: border-box;
-
- text-decoration: none;
-scroll-behavior: smooth;
-}
-
-header
-{
-  width: 100%;
-  height:15vh;
-  background:white;  
-position: absolute;
-}
-.logo
-{
-font-family: 'Roboto', sans-serif;
-font-size:1.5em;
-color:#222;
-text-transform: uppercase;
-text-decoration: none;
-cursor: pointer;
-}
-.logo:hover
-{ color:#141E61;
- text-decoration: none;}
-span
-{font-size:1.5em;
-color:#141E61;
-}
-span:hover
-{font-size:2em;
-  transition:.2s ease-out;
-
-}
-.nav ul
-{background:none;
- flex-direction: row;
- display: flex; 
- position: absolute;
- right:0;  
- top: 30px;
- font-family: 'IBM Plex Sans Arabic', sans-serif;
-
-}
-.nav ul  li
-{padding: 0px 20px;
-  list-style: none;}
-
-
-.nav ul  li .in
-{ 
- background:none;
- padding: 5px;
- display: block;
- color: black;
- border: 2px solid #141E61;   
-}
-.nav ul li .in:hover
-{background:#141E61;
-  color: #fff;
- text-decoration: none;
- transition: .2s;}
-.nav ul li  .btn 
-{
-background: #141E61;
-display: block;
-color: #fff;
-outline: none;
-padding: 8px 20px;
-border: none;
-}
-button{background: #141E61;
-   color: white;
-  outline: none;
-  border: 2px solid #141E61 ;
-   padding: 10px;
-  border-radius: 20px;}
-.image
-{
- width:100%;
- height: 70vh;
- background:whitesmoke;   
- text-align: center;
- position: absolute;
- top:160;
-}
-h1
-{
-color: rgb(54, 54, 54);    
-font-size: 2.5rem;
-font-family: 'Rubik', sans-serif;
-font-weight: 400;
-}
-
-.instruction
-{width: 100%;
-height: 88vh;
-background:white;
-position: absolute;
-top: 890;
-}
-h2
-{border-bottom:2px solid #141E61;
-width: 20%;
-height: 13%;
-position: absolute;
- left: 560;
-}
-ol
-{position: absolute;
- display: flex;
- background: none;
- width: 100%;
-flex-direction: column;
-padding: 80px 560px;
-position: absolute;
-left: 60;
-}
-.number
-{color:#141E61;
-position: absolute;
-left:490;}
-.list
-{list-style: none;
-  font-size:1.1rem;
- padding: 10px 10px;}
-.fas
-{color:silver;
-transform:rotate(180deg);
-}
-
-.arrow
-{background:#141E61;
- border-radius: 70%;
-width: 50px;
-height:50px;
-position:fixed;
-right: 10;
-top: 530;
-text-align: center;
-transform: scale(0); 
-cursor: pointer;
-}
-
-.active
-{transform: scale(1);
- transition: .2s all;}
-
- .abt
- {
- width:100%;
- height:40vh;
- background: whitesmoke;
- position: absolute;
- top:1600; 
- text-align: center; 
-
- }
-
- .heading2
- {
-  width:10%;
-  height:50px;
-margin: 0px 70px;
-
- }
-
- h4
- {
-  position: absolute;
-  top:65;
-  left: 350;
-  font-family:cursive ;  
- padding: 20px 0px;
-}
-.mail
-{color:#141E61;
-font-size: 1.2em;}
-@media (max-width: 768px)
-{
- h2
-{background-color:none;
- position: absolute;
- left:160;
- width: 40%;} 
- ol {padding: 70px 0px;
-        
-}
-    .list{font-size:30px;
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+    
+    *
+    {
+     margin:0;   
+     padding: 0;
+     box-sizing: border-box;
+    
+     text-decoration: none;
+    scroll-behavior: smooth;
     }
-.number
-{position: absolute;
- padding:-26px 0px; 
- left: -35px;}
-
-.heading2
-{
-margin:0px 18px;
-width: 30%;
-}
-
-.abt
-{height: 70vh;}
-
-h4
-{
- position: absolute;
- left: 0;
-padding: auto;
-}
-
-.arrow
-{position:fixed;
-  right: 0;
-  top: 520;
-  
-}
-
-}
-</style>
-<script>
-
-      $(document).ready(function () {
-        let imageUrl;
-      
-        $("#image").change(function (e) {
-          var file= e.target.files[0];
-          readImage(file)
-        });
-      
-        function readImage(file){
-          if (file.type && file.type.indexOf('image') === -1) {
-              alert("file is not an image")
-              return;
-            }
-          
-            const reader = new FileReader();
-            reader.addEventListener('load', (event) => {
-              imageUrl = event.target.result;
-              console.log(imageUrl)
-            });
-            reader.readAsDataURL(file);
+    
+    header
+    {
+      width: 100%;
+      height:15vh;
+      background:white;  
+    position: absolute;
+    }
+    .logo
+    {
+    font-family: 'Roboto', sans-serif;
+    font-size:1.5em;
+    color:#222;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    }
+    .logo:hover
+    { color:#141E61;
+     text-decoration: none;}
+    span
+    {font-size:1.5em;
+    color:#141E61;
+    }
+    span:hover
+    {font-size:2em;
+      transition:.2s ease-out;
+    
+    }
+    .nav ul
+    {background:none;
+     flex-direction: row;
+     display: flex; 
+     position: absolute;
+     right:0;  
+     top: 30px;
+     font-family: 'IBM Plex Sans Arabic', sans-serif;
+    
+    }
+    .nav ul  li
+    {padding: 0px 20px;
+      list-style: none;}
+    
+    
+    .nav ul  li .in
+    { 
+     background:none;
+     padding: 5px;
+     display: block;
+     color: black;
+     border: 2px solid #141E61;   
+    }
+    .nav ul li .in:hover
+    {background:#141E61;
+      color: #fff;
+     text-decoration: none;
+     transition: .2s;}
+    .nav ul li  .btn 
+    {
+    background: #141E61;
+    display: block;
+    color: #fff;
+    outline: none;
+    padding: 8px 20px;
+    border: none;
+    }
+    button{background: #141E61;
+       color: white;
+      outline: none;
+      border: 2px solid #141E61 ;
+       padding: 10px;
+      border-radius: 20px;}
+    .image
+    {
+     width:100%;
+     height: 70vh;
+     background:whitesmoke;   
+     text-align: center;
+     position: absolute;
+     top:160;
+    }
+    h1
+    {
+    color: rgb(54, 54, 54);    
+    font-size: 2.5rem;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 400;
+    }
+    
+    .instruction
+    {width: 100%;
+    height: 88vh;
+    background:white;
+    position: absolute;
+    top: 890;
+    }
+    h2
+    {border-bottom:2px solid #141E61;
+    width: 20%;
+    height: 13%;
+    position: absolute;
+     left: 560;
+    }
+    ol
+    {position: absolute;
+     display: flex;
+     background: none;
+     width: 100%;
+    flex-direction: column;
+    padding: 80px 560px;
+    position: absolute;
+    left: 60;
+    }
+    .number
+    {color:#141E61;
+    position: absolute;
+    left:490;}
+    .list
+    {list-style: none;
+      font-size:1.1rem;
+     padding: 10px 10px;}
+    .fas
+    {color:silver;
+    transform:rotate(180deg);
+    }
+    
+    .arrow
+    {background:#141E61;
+     border-radius: 70%;
+    width: 50px;
+    height:50px;
+    position:fixed;
+    right: 10;
+    top: 530;
+    text-align: center;
+    transform: scale(0); 
+    cursor: pointer;
+    }
+    
+    .active
+    {transform: scale(1);
+     transition: .2s all;}
+    
+     .abt
+     {
+     width:100%;
+     height:40vh;
+     background: whitesmoke;
+     position: absolute;
+     top:1600; 
+     text-align: center; 
+    
+     }
+    
+     .heading2
+     {
+      width:10%;
+      height:50px;
+    margin: 0px 70px;
+    
+     }
+    
+     h4
+     {
+      position: absolute;
+      top:65;
+      left: 350;
+      font-family:cursive ;  
+     padding: 20px 0px;
+    }
+    .mail
+    {color:#141E61;
+    font-size: 1.2em;}
+    @media (max-width: 768px)
+    {
+     h2
+    {background-color:none;
+     position: absolute;
+     left:160;
+     width: 40%;} 
+     ol {padding: 70px 0px;
+            
+    }
+        .list{font-size:30px;
         }
+    .number
+    {position: absolute;
+     padding:-26px 0px; 
+     left: -35px;}
+    
+    .heading2
+    {
+    margin:0px 18px;
+    width: 30%;
+    }
+    
+    .abt
+    {height: 70vh;}
+    
+    h4
+    {
+     position: absolute;
+     left: 0;
+    padding: auto;
+    }
+    
+    .arrow
+    {position:fixed;
+      right: 0;
+      top: 520;
       
-        $("#myForm").submit(function (e) {
-          e.preventDefault();
-      
-          if ($("#url").val() !== "") {
-            imageUrl = $("#url").val();
-            convertImage(imageUrl);
-          } else {
-            convertImage(imageUrl);
-          }
-        });
-      
-        function convertImage(imageUrl) {
-          var imageType = $("#format option:selected").text();
-          if (browserImageCoverter.downloadImageWithType(imageUrl, imageType)) {
-          } 
-        }
-      });    
-          
-      var arrow= document.querySelector(".arrow");
-      
-      window.addEventListener("scroll", () => {
-        if (window.pageYOffset >70) {
-          arrow.classList.add("active");
-        } else {
-          arrow.classList.remove("active");
-        }
-      });
-      
-      
-      </script>
-      
+    }
+    
+    }
+  </style>
   </head>
  
 <body>
@@ -350,12 +295,12 @@ padding: auto;
   <section class="instruction" id="instruction">
           <h2 class="text-center">instruction</h2>
 <ol>
-  <li class="list"><span class="number">1</span>  place the image url by copy,
-    and paste  </li>
-  <li class="list"><span class="number">2</span>  click the file button to choose desktop image.</li>
-  <li class="list"><span class="number">3</span>  make sure to choose correct file format.</li>
-  <li class="list"><span class="number">4</span>  finally! click the convert button.</li>
-  
+  <li class="list"><span class="number">1</span>  place the image url by copy,paste or choose file </li>
+  <li class="list"><span class="number">2</span>  click the file.
+  </li>
+  <li class="list"><span class="number">3</span> Adjust the letter size, orientation, and margin as you wish.</li>
+  <li class="list"><span class="number">4</span> Adjust the letter size, orientation, and margin as you wish.</li>
+  <li class="list"><span class="number">5</span>Adjust the letter size, orientation, and margin as you wish.</li>
 </ol>
 
 
@@ -369,10 +314,64 @@ padding: auto;
 
    <h4>we are create for portfolio purpose only <br>  
        we are run any oraganisation<br> 
-       for any query mail at<a href="https://mail.google.com/mail/u/0/#inbox" class="mail">koreE image converter @gmail.com </a> 
+       for any query mail at<a href="https://mail.google.com/mail/u/0/#inbox">koreE image converter @gmail.com </a> 
   </h4>
 
     </section>    
+<script>
+
+$(document).ready(function () {
+  let imageUrl;
+
+  $("#image").change(function (e) {
+    var file= e.target.files[0];
+    readImage(file)
+  });
+
+  function readImage(file){
+    if (file.type && file.type.indexOf('image') === -1) {
+        alert("file is not an image")
+        return;
+      }
+    
+      const reader = new FileReader();
+      reader.addEventListener('load', (event) => {
+        imageUrl = event.target.result;
+        console.log(imageUrl)
+      });
+      reader.readAsDataURL(file);
+  }
+
+  $("#myForm").submit(function (e) {
+    e.preventDefault();
+
+    if ($("#url").val() !== "") {
+      imageUrl = $("#url").val();
+      convertImage(imageUrl);
+    } else {
+      convertImage(imageUrl);
+    }
+  });
+
+  function convertImage(imageUrl) {
+    var imageType = $("#format option:selected").text();
+    if (browserImageCoverter.downloadImageWithType(imageUrl, imageType)) {
+    } 
+  }
+});    
+    
+var arrow= document.querySelector(".arrow");
+
+window.addEventListener("scroll", () => {
+  if (window.pageYOffset >70) {
+    arrow.classList.add("active");
+  } else {
+    arrow.classList.remove("active");
+  }
+});
+
+
+</script>
 
 </body>
 </html>
